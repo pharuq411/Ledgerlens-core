@@ -11,7 +11,7 @@ The actual file writes for this directory are in the GitHub Actions workflow [`.
 - `reports/licenses-python.csv` is written by `pip-licenses --output-file=reports/licenses-python.csv` and uploaded as a workflow artifact.
 - `reports/osv-*.txt` files are written by `osv-scanner --output reports/osv-python-base.txt` and uploaded as workflow artifacts.
 
-The local maintenance commands documented in [Makefile](../Makefile) and [CONTRIBUTING.md](../CONTRIBUTING.md) also generate the same files in this directory when running the license and OSV scan tasks.
+The local `license` task documented in [Makefile](../Makefile) generates the CSV in this directory. The local `audit-py` task creates the directory but prints its OSV scan to standard output; it does not currently write a report file.
 
 ## What does not write here
 
@@ -40,7 +40,7 @@ make license
 ```bash
 # Requires osv-scanner: https://github.com/google/osv-scanner
 make audit-py
-# Writes: reports/osv-*.txt
+# Prints the scan; CI writes reports/osv-python-base.txt
 ```
 
 ## Related directories
